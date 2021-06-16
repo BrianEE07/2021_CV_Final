@@ -1,0 +1,44 @@
+[
+    {
+        "frameA": "validation/0_center_frame/0/input/frame10.png",
+        "frameB": "validation/0_center_frame/0/input/frame11.png",
+        "frameGT": "validation/0_center_frame/0/GT/frame10i11.png",
+        "id": "0"
+    },
+    {
+        "frameA": "validation/0_center_frame/1/input/frame10.png",
+        "frameB": "validation/0_center_frame/1/input/frame11.png",
+        "frameGT": "validation/0_center_frame/1/GT/frame10i11.png",
+        "id": "1"
+    },
+    {
+        "frameA": "validation/0_center_frame/2/input/frame10.png",
+        "frameB": "validation/0_center_frame/2/input/frame11.png",
+        "frameGT": "validation/0_center_frame/2/GT/frame10i11.png",
+        "id": "2"
+    },
+    {
+        "frameA": "validation/0_center_frame/3/input/frame10.png",
+        "frameB": "validation/0_center_frame/3/input/frame11.png",
+        "frameGT": "validation/0_center_frame/3/GT/frame10i11.png",
+        "id": "3"
+    },
+    {
+        "frameA": "validation/0_center_frame/4/input/frame10.png",
+        "frameB": "validation/0_center_frame/4/input/frame11.png",
+        "frameGT": "validation/0_center_frame/4/GT/frame10i11.png",
+        "id": "4"
+    },
+    {
+        "frameA": "validation/0_center_frame/5/input/frame10.png",
+        "frameB": "validation/0_center_frame/5/input/frame11.png",
+        "frameGT": "validation/0_center_frame/5/GT/frame10i11.png",
+        "id": "5"
+    },
+    {
+        "frameA": "validation/0_center_frame/6/input/frame10.png",
+        "frameB": "validation/0_center_frame/6/input/frame11.png",
+        "frameGT": "validation/0_center_frame/6/GT/frame10i11.png",
+        "id": "6"
+    }
+]
