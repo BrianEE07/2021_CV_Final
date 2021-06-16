@@ -1,0 +1,82 @@
+[
+    {
+        "frameA": "testing/2_24fps_to_60fps/3/0/input/00000.jpg",
+        "frameB": "testing/2_24fps_to_60fps/3/0/input/00010.jpg",
+        "id": "3_0"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/3/1/input/00010.jpg",
+        "frameB": "testing/2_24fps_to_60fps/3/1/input/00020.jpg",
+        "id": "3_1"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/3/2/input/00020.jpg",
+        "frameB": "testing/2_24fps_to_60fps/3/2/input/00030.jpg",
+        "id": "3_2"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/3/3/input/00030.jpg",
+        "frameB": "testing/2_24fps_to_60fps/3/3/input/00040.jpg",
+        "id": "3_3"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/3/4/input/00040.jpg",
+        "frameB": "testing/2_24fps_to_60fps/3/4/input/00050.jpg",
+        "id": "3_4"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/3/5/input/00050.jpg",
+        "frameB": "testing/2_24fps_to_60fps/3/5/input/00060.jpg",
+        "id": "3_5"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/3/6/input/00060.jpg",
+        "frameB": "testing/2_24fps_to_60fps/3/6/input/00070.jpg",
+        "id": "3_6"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/3/7/input/00070.jpg",
+        "frameB": "testing/2_24fps_to_60fps/3/7/input/00080.jpg",
+        "id": "3_7"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/4/0/input/00000.jpg",
+        "frameB": "testing/2_24fps_to_60fps/4/0/input/00010.jpg",
+        "id": "4_0"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/4/1/input/00010.jpg",
+        "frameB": "testing/2_24fps_to_60fps/4/1/input/00020.jpg",
+        "id": "4_1"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/4/2/input/00020.jpg",
+        "frameB": "testing/2_24fps_to_60fps/4/2/input/00030.jpg",
+        "id": "4_2"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/4/3/input/00030.jpg",
+        "frameB": "testing/2_24fps_to_60fps/4/3/input/00040.jpg",
+        "id": "4_3"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/4/4/input/00040.jpg",
+        "frameB": "testing/2_24fps_to_60fps/4/4/input/00050.jpg",
+        "id": "4_4"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/4/5/input/00050.jpg",
+        "frameB": "testing/2_24fps_to_60fps/4/5/input/00060.jpg",
+        "id": "4_5"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/4/6/input/00060.jpg",
+        "frameB": "testing/2_24fps_to_60fps/4/6/input/00070.jpg",
+        "id": "4_6"
+    },
+    {
+        "frameA": "testing/2_24fps_to_60fps/4/7/input/00070.jpg",
+        "frameB": "testing/2_24fps_to_60fps/4/7/input/00080.jpg",
+        "id": "4_7"
+    }
+]

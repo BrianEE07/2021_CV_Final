@@ -1,0 +1,122 @@
+[
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/0/input/00000.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/0/input/00008.jpg",
+        "id": "3_0"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/1/input/00008.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/1/input/00016.jpg",
+        "id": "3_1"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/2/input/00016.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/2/input/00024.jpg",
+        "id": "3_2"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/3/input/00024.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/3/input/00032.jpg",
+        "id": "3_3"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/4/input/00032.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/4/input/00040.jpg",
+        "id": "3_4"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/5/input/00040.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/5/input/00048.jpg",
+        "id": "3_5"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/6/input/00048.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/6/input/00056.jpg",
+        "id": "3_6"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/7/input/00056.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/7/input/00064.jpg",
+        "id": "3_7"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/8/input/00064.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/8/input/00072.jpg",
+        "id": "3_8"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/9/input/00072.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/9/input/00080.jpg",
+        "id": "3_9"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/10/input/00080.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/10/input/00088.jpg",
+        "id": "3_10"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/3/11/input/00088.jpg",
+        "frameB": "testing/1_30fps_to_240fps/3/11/input/00096.jpg",
+        "id": "3_11"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/0/input/00000.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/0/input/00008.jpg",
+        "id": "4_0"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/1/input/00008.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/1/input/00016.jpg",
+        "id": "4_1"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/2/input/00016.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/2/input/00024.jpg",
+        "id": "4_2"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/3/input/00024.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/3/input/00032.jpg",
+        "id": "4_3"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/4/input/00032.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/4/input/00040.jpg",
+        "id": "4_4"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/5/input/00040.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/5/input/00048.jpg",
+        "id": "4_5"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/6/input/00048.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/6/input/00056.jpg",
+        "id": "4_6"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/7/input/00056.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/7/input/00064.jpg",
+        "id": "4_7"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/8/input/00064.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/8/input/00072.jpg",
+        "id": "4_8"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/9/input/00072.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/9/input/00080.jpg",
+        "id": "4_9"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/10/input/00080.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/10/input/00088.jpg",
+        "id": "4_10"
+    },
+    {
+        "frameA": "testing/1_30fps_to_240fps/4/11/input/00088.jpg",
+        "frameB": "testing/1_30fps_to_240fps/4/11/input/00096.jpg",
+        "id": "4_11"
+    }
+]

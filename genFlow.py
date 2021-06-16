@@ -17,9 +17,12 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--split', help='Data split', choices=['validation', 'testing'], required=True)
+    parser.add_argument('--task', help='Data tast', choices=['0_center_frame', '1_30fps_to_240fps', '2_24fps_to_60fps'], required=True)
     args = parser.parse_args()
     split = args.split
+    task = args.task
     print(split)
+    print(task)
 
      # Model checkpoint to use
     saved_model      = "./model/chairs_things_0.pt"
@@ -28,7 +31,7 @@ def main():
     dataset_base_dir = "./data/"
 
     # Output dir
-    output_dir = os.path.join("flow", f"{split}", "0_center_frame")
+    output_dir = os.path.join("flow", f"{split}", f"{task}")
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
         print("Created output dir", output_dir)
@@ -37,8 +40,7 @@ def main():
     # Labels
     #####################################################################################################
 
-    # only for 0_center_frame now
-    labels_json = os.path.join("json", f"{split}_0.json")
+    labels_json = os.path.join("json", f"{split}_{task[0]}.json")
 
     assert os.path.isfile(labels_json), f"{labels_json} does not exist!"
 

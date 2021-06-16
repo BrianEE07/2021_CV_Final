@@ -1,0 +1,170 @@
+[
+    {
+        "frameA": "validation/2_24fps_to_60fps/0/0/input/00000.jpg",
+        "frameB": "validation/2_24fps_to_60fps/0/0/input/00010.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "0_0"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/0/1/input/00010.jpg",
+        "frameB": "validation/2_24fps_to_60fps/0/1/input/00020.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "0_1"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/0/2/input/00020.jpg",
+        "frameB": "validation/2_24fps_to_60fps/0/2/input/00030.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "0_2"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/0/3/input/00030.jpg",
+        "frameB": "validation/2_24fps_to_60fps/0/3/input/00040.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "0_3"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/0/4/input/00040.jpg",
+        "frameB": "validation/2_24fps_to_60fps/0/4/input/00050.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "0_4"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/0/5/input/00050.jpg",
+        "frameB": "validation/2_24fps_to_60fps/0/5/input/00060.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "0_5"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/0/6/input/00060.jpg",
+        "frameB": "validation/2_24fps_to_60fps/0/6/input/00070.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "0_6"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/0/7/input/00070.jpg",
+        "frameB": "validation/2_24fps_to_60fps/0/7/input/00080.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "0_7"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/1/0/input/00000.jpg",
+        "frameB": "validation/2_24fps_to_60fps/1/0/input/00010.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "1_0"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/1/1/input/00010.jpg",
+        "frameB": "validation/2_24fps_to_60fps/1/1/input/00020.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "1_1"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/1/2/input/00020.jpg",
+        "frameB": "validation/2_24fps_to_60fps/1/2/input/00030.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "1_2"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/1/3/input/00030.jpg",
+        "frameB": "validation/2_24fps_to_60fps/1/3/input/00040.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "1_3"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/1/4/input/00040.jpg",
+        "frameB": "validation/2_24fps_to_60fps/1/4/input/00050.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "1_4"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/1/5/input/00050.jpg",
+        "frameB": "validation/2_24fps_to_60fps/1/5/input/00060.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "1_5"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/1/6/input/00060.jpg",
+        "frameB": "validation/2_24fps_to_60fps/1/6/input/00070.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "1_6"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/1/7/input/00070.jpg",
+        "frameB": "validation/2_24fps_to_60fps/1/7/input/00080.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "1_7"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/2/0/input/00000.jpg",
+        "frameB": "validation/2_24fps_to_60fps/2/0/input/00010.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "2_0"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/2/1/input/00010.jpg",
+        "frameB": "validation/2_24fps_to_60fps/2/1/input/00020.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "2_1"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/2/2/input/00020.jpg",
+        "frameB": "validation/2_24fps_to_60fps/2/2/input/00030.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "2_2"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/2/3/input/00030.jpg",
+        "frameB": "validation/2_24fps_to_60fps/2/3/input/00040.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "2_3"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/2/4/input/00040.jpg",
+        "frameB": "validation/2_24fps_to_60fps/2/4/input/00050.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "2_4"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/2/5/input/00050.jpg",
+        "frameB": "validation/2_24fps_to_60fps/2/5/input/00060.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "2_5"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/2/6/input/00060.jpg",
+        "frameB": "validation/2_24fps_to_60fps/2/6/input/00070.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "2_6"
+    },
+    {
+        "frameA": "validation/2_24fps_to_60fps/2/7/input/00070.jpg",
+        "frameB": "validation/2_24fps_to_60fps/2/7/input/00080.jpg",
+        "frameGT0": "undone",
+        "frameGT1": "undone",
+        "id": "2_7"
+    }
+]
