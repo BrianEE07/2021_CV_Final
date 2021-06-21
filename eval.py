@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 import math
-from skimage.measure import compare_ssim
+# from skimage.measure import compare_ssim
+from skimage.metrics import structural_similarity
 import os
 import glob
 
@@ -15,7 +16,8 @@ def psnr(img1, img2):
     return PSNR
 
 def ssim(img1, img2):
-    return compare_ssim(img1.astype(np.float32)/255., img2.astype(np.float32)/255., gaussian_weights=True, sigma=1.5, use_sample_covariance=False, multichannel=True)
+    # return compare_ssim(img1.astype(np.float32)/255., img2.astype(np.float32)/255., gaussian_weights=True, sigma=1.5, use_sample_covariance=False, multichannel=True)
+    return structural_similarity(img1.astype(np.float32)/255., img2.astype(np.float32)/255., gaussian_weights=True, sigma=1.5, use_sample_covariance=False, multichannel=True)
 
 if __name__ == '__main__':
     from interp_frame import interp_frame

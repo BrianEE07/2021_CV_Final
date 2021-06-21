@@ -1,44 +1,21 @@
 import numpy as np
 import torch
 import torch.nn as nn
-import math
-from model import pwcnet
+from PIL import Image
+from flownet import estimate
 
-def genFlow(frameA, frameB, model):
+def genFlow(frameA_path, frameB_path):
 
-    frameA = np.moveaxis(frameA, -1, 0) / 255.0 # (3, h, w)
-    frameB = np.moveaxis(frameB, -1, 0) / 255.0 # (3, h, w)
-    assert(frameA.shape[1] == frameB.shape[1])
-    assert(frameA.shape[2] == frameB.shape[2])
-
-    intWidth = frameA.shape[2]
-    intHeight = frameA.shape[1]
+    tsframeA = torch.FloatTensor(np.ascontiguousarray(np.array(Image.open(frameA_path))[:, :, ::-1].transpose(2, 0, 1).astype(np.float32) * (1.0 / 255.0)))
+    tsframeB = torch.FloatTensor(np.ascontiguousarray(np.array(Image.open(frameB_path))[:, :, ::-1].transpose(2, 0, 1).astype(np.float32) * (1.0 / 255.0)))
 
     #####################################################################################################
     # Predict Flow
     #####################################################################################################
+    flow01 = estimate(tsframeA, tsframeB)
+    flow10 = estimate(tsframeB, tsframeA)
 
-    # Move to device and unsqueeze in the batch dimension (to have batch size 1)
-    frameA_cuda = torch.from_numpy(frameA).cuda().unsqueeze(0).float()
-    frameB_cuda = torch.from_numpy(frameB).cuda().unsqueeze(0).float()
-    # image need to ber divisible by 64
-    intWidth64= int(math.ceil(intWidth / 64.0) * 64.0)
-    intHeight64 = int(math.ceil(intHeight / 64.0) * 64.0)
-    frameA64_cuda = torch.nn.functional.interpolate(input=frameA_cuda, size=(intHeight64, intWidth64), mode='bilinear', align_corners=False)
-    frameB64_cuda = torch.nn.functional.interpolate(input=frameB_cuda, size=(intHeight64, intWidth64), mode='bilinear', align_corners=False)
-    with torch.no_grad():
-        flow = model.forward(frameA64_cuda, frameB64_cuda) # both (1, 3, 64n, 64m)
+    optical_flow01 = flow01.squeeze(0).cpu().numpy().transpose(1, 2, 0) # (h, w, 2)
+    optical_flow10 = flow10.squeeze(0).cpu().numpy().transpose(1, 2, 0) # (h, w, 2)
 
-    flow = 20.0 * torch.nn.functional.interpolate(input=flow, size=(intHeight, intWidth), mode='bilinear', align_corners=False)
-    flow[:, 0, :, :] *= float(intWidth) / float(intWidth64)
-    flow[:, 1, :, :] *= float(intHeight) / float(intHeight64)
-
-    #####################################################################################################
-    # Predict Flow
-    #####################################################################################################
-
-    # Flow is stored row-wise in order [channels, height, width].
-    optical_flow = flow.squeeze(0).cpu().numpy().transpose(1, 2, 0) # (h, w, 2)
-    assert len(optical_flow.shape) == 3
-
-    return optical_flow
+    return optical_flow01, optical_flow10

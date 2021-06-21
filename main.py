@@ -7,7 +7,9 @@ import torch
 import torch.nn as nn
 import math
 from tqdm import tqdm
-from model import pwcnet
+from skimage import io
+from eval import psnr
+from eval import ssim
 from task import task_center
 from task import task_30to240
 from task import task_24to60
@@ -25,10 +27,6 @@ def main():
     split = args.split
     task = args.task
     print(split, task)
-
-     # Model checkpoint to use
-    saved_model = "./model/chairs_things_0.pt"
-    print("model path :", saved_model)
 
     # Dataset dir
     dataset_base_dir = "./data/"
@@ -51,19 +49,6 @@ def main():
         labels = json.loads(f.read())
 
     #####################################################################################################
-    # Model
-    #####################################################################################################
-
-    assert os.path.isfile(saved_model), f"Model {saved_model} does not exist!"
-    pretrained_dict = torch.load(saved_model)
-
-    # Construct model
-    model = pwcnet.PWCNet().cuda()
-    model.load_state_dict(pretrained_dict)
-
-    model.eval()
-
-    #####################################################################################################
     # Load Data
     #####################################################################################################
 
@@ -74,13 +59,15 @@ def main():
         print("frameB", frameB_path)
         
         if task == "0_center_frame":
-            task_center(frameA_path, frameB_path, output_dir, label["id"], model)
+            midframe = task_center(frameA_path, frameB_path, output_dir, label["id"])
             if split == "validation":
                 frameGT_path = os.path.join(dataset_base_dir, label["frameGT"])
-                # print("GT", frameGT_path)
-
+                frameGT = io.imread(frameGT_path) # (h, w, 3) RGB
+                psnr_score = psnr(frameGT, midframe)
+                ssim_score = ssim(frameGT, midframe)
+                print(label["id"], psnr_score, ssim_score)
         elif task == "1_30fps_to_240fps":
-            task_30to240(frameA_path, frameB_path, output_dir, label["id"], model)
+            frames = task_30to240(frameA_path, frameB_path, output_dir, label["id"])
             if split == "validation":
                 frameGT0_path = os.path.join(dataset_base_dir, label["frameGT0"])
                 frameGT1_path = os.path.join(dataset_base_dir, label["frameGT1"])
@@ -89,20 +76,11 @@ def main():
                 frameGT4_path = os.path.join(dataset_base_dir, label["frameGT4"])
                 frameGT5_path = os.path.join(dataset_base_dir, label["frameGT5"])
                 frameGT6_path = os.path.join(dataset_base_dir, label["frameGT6"])
-                # print("GT", frameGT0_path)
-                # print("GT", frameGT1_path)
-                # print("GT", frameGT2_path)
-                # print("GT", frameGT3_path)
-                # print("GT", frameGT4_path)
-                # print("GT", frameGT5_path)
-                # print("GT", frameGT6_path)
         elif task == "2_24fps_to_60fps":
-            task_24to60(frameA_path, frameB_path, output_dir, label["id"], model)
+            frames = task_24to60(frameA_path, frameB_path, output_dir, label["id"])
             if split == "validation":
                 frameGT0_path = os.path.join(dataset_base_dir, label["frameGT0"])
                 frameGT1_path = os.path.join(dataset_base_dir, label["frameGT1"])
-                # print("GT", frameGT0_path)
-                # print("GT", frameGT1_path)
 
 if __name__ == "__main__":
     main()
