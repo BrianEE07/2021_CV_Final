@@ -10,9 +10,7 @@ from tqdm import tqdm
 from skimage import io
 from eval import psnr
 from eval import ssim
-from task import task_center
-from task import task_30to240
-from task import task_24to60
+from task import task_center, task_30to240, task_24to60
 
 def main():
 
@@ -61,26 +59,26 @@ def main():
         if task == "0_center_frame":
             midframe = task_center(frameA_path, frameB_path, output_dir, label["id"])
             if split == "validation":
-                frameGT_path = os.path.join(dataset_base_dir, label["frameGT"])
-                frameGT = io.imread(frameGT_path) # (h, w, 3) RGB
+                frameGT = io.imread(os.path.join(dataset_base_dir, label["frameGT"])) # (h, w, 3) RGB
                 psnr_score = psnr(frameGT, midframe)
                 ssim_score = ssim(frameGT, midframe)
                 print(label["id"], psnr_score, ssim_score)
         elif task == "1_30fps_to_240fps":
             frames = task_30to240(frameA_path, frameB_path, output_dir, label["id"])
             if split == "validation":
-                frameGT0_path = os.path.join(dataset_base_dir, label["frameGT0"])
-                frameGT1_path = os.path.join(dataset_base_dir, label["frameGT1"])
-                frameGT2_path = os.path.join(dataset_base_dir, label["frameGT2"])
-                frameGT3_path = os.path.join(dataset_base_dir, label["frameGT3"])
-                frameGT4_path = os.path.join(dataset_base_dir, label["frameGT4"])
-                frameGT5_path = os.path.join(dataset_base_dir, label["frameGT5"])
-                frameGT6_path = os.path.join(dataset_base_dir, label["frameGT6"])
+                for i in range(7):
+                    frameGT = io.imread(os.path.join(dataset_base_dir, label["frameGT" + str(i)]))
+                    psnr_score = psnr(frameGT, frames[i])
+                    ssim_score = ssim(frameGT, frames[i])
+                    print(label["id"], i, psnr_score, ssim_score)
         elif task == "2_24fps_to_60fps":
             frames = task_24to60(frameA_path, frameB_path, output_dir, label["id"])
             if split == "validation":
-                frameGT0_path = os.path.join(dataset_base_dir, label["frameGT0"])
-                frameGT1_path = os.path.join(dataset_base_dir, label["frameGT1"])
+                for i in range(2):
+                    frameGT = io.imread(os.path.join(dataset_base_dir, label["frameGT" + str(i)]))
+                    psnr_score = psnr(frameGT, frames[i])
+                    ssim_score = ssim(frameGT, frames[i])
+                    print(label["id"], i, psnr_score, ssim_score)
 
 if __name__ == "__main__":
     main()
