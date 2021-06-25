@@ -5,7 +5,7 @@ import torch.nn as nn
 import flow_vis
 from skimage import io
 from genFlow import genFlow
-from warping import Fwarp, Bwarpt0, Bwarpt1, occlusion
+from warping import OldFwarp, Fwarp, Bwarpt0, Bwarpt1, occlusion
 from splatting import backwarp
 import softsplat
 
@@ -22,8 +22,9 @@ def task_center(frameA_path, frameB_path, output_dir, id):
     io.imsave(os.path.join(output_dir, id, "frame10i11.jpg"), midframe)
 
     # visualize flow (for debug)
-    # flow_color = flow_vis.flow_to_color(flow01, convert_to_bgr=False)
-    # io.imsave(os.path.join(output_dir, id, "flow01.png"), flow_color)
+    # if id == "5":
+    #     io.imsave(os.path.join(output_dir, id, "flow01.png"), flow_vis.flow_to_color(flow01, convert_to_bgr=False))
+    #     io.imsave(os.path.join(output_dir, id, "flow10.png"), flow_vis.flow_to_color(flow10, convert_to_bgr=False))
     return midframe
 
 def task_30to240(frameA_path, frameB_path, output_dir, id):
@@ -68,7 +69,7 @@ def task_24to60(frameA_path, frameB_path, output_dir, id):
 def interp_frame(frameA, frameB, flow01, flow10, t): # pipeline after flow generation
 
     # alpha = -0.01 # for my softmax splatting
-    alpha = -20 # for softmax splatting
+    alpha = -16 # for softmax splatting
     # Z01 = alpha * np.repeat(np.mean(np.absolute(frameA - Bwarpt1(frameB, flow01, flow10, 0)), axis=2, keepdims=True), 3, axis=2)
     # Z10 = alpha * np.repeat(np.mean(np.absolute(frameB - Bwarpt0(frameA, flow01, flow10, 1)), axis=2, keepdims=True), 3, axis=2)
 
@@ -85,6 +86,8 @@ def interp_frame(frameA, frameB, flow01, flow10, t): # pipeline after flow gener
 
     # tenAverage0t = softsplat.FunctionSoftsplat(tenInput=tenFirst, tenFlow=tenFlow01 * t, tenMetric=None, strType='average')
     # tenAverage1t = softsplat.FunctionSoftsplat(tenInput=tenSecond, tenFlow=tenFlow10 * (1-t), tenMetric=None, strType='average')
+    # tenLinear0t = softsplat.FunctionSoftsplat(tenInput=tenFirst, tenFlow=tenFlow01 * t, tenMetric=(0.3 - tenMetric01).clamp(0.0000001, 1.0), strType='linear')
+    # tenLinear1t = softsplat.FunctionSoftsplat(tenInput=tenFirst, tenFlow=tenFlow10 * (1-t), tenMetric=(0.3 - tenMetric10).clamp(0.0000001, 1.0), strType='linear')
     tenSoftmax0t = softsplat.FunctionSoftsplat(tenInput=tenFirst, tenFlow=tenFlow01 * t, tenMetric=alpha * tenMetric01, strType='softmax')
     tenSoftmax1t = softsplat.FunctionSoftsplat(tenInput=tenSecond, tenFlow=tenFlow10 * (1-t), tenMetric=alpha * tenMetric10, strType='softmax')
     ###### test softsplat ######    
@@ -92,11 +95,17 @@ def interp_frame(frameA, frameB, flow01, flow10, t): # pipeline after flow gener
     # forward warping - average/softmax splatting
     # frame0t = Fwarp(frameA, flow01, t, splatting='average')       # forward warp I0 -> It
     # frame1t = Fwarp(frameB, flow10, 1.0 - t, splatting='average') # forward warp I1 -> It
+    # frame0t = OldFwarp(frameA, flow01, t)       # forward warp I0 -> It
+    # frame1t = OldFwarp(frameB, flow10, 1.0 - t) # forward warp I1 -> It
+    # framet0 = Bwarpt0(frameA, flow01, flow10, t)       # backward warp It -> I0
+    # framet1 = Bwarpt1(frameB, flow01, flow10, t) # backward warp It -> I1
     # frame0t = Fwarp(frameA, flow01, t, Z01, splatting='softmax')       # forward warp I0 -> It
     # frame1t = Fwarp(frameB, flow10, 1.0 - t, Z10, splatting='softmax') # forward warp I1 -> It
 
     # frame0t = tenAverage0t[0, :, :, :].cpu().numpy().transpose(1, 2, 0)[:, :, ::-1] * 255.0
     # frame1t = tenAverage1t[0, :, :, :].cpu().numpy().transpose(1, 2, 0)[:, :, ::-1] * 255.0
+    # frame0t = tenLinear0t[0, :, :, :].cpu().numpy().transpose(1, 2, 0)[:, :, ::-1] * 255.0
+    # frame1t = tenLinear1t[0, :, :, :].cpu().numpy().transpose(1, 2, 0)[:, :, ::-1] * 255.0
     frame0t = tenSoftmax0t[0, :, :, :].cpu().numpy().transpose(1, 2, 0)[:, :, ::-1] * 255.0
     frame1t = tenSoftmax1t[0, :, :, :].cpu().numpy().transpose(1, 2, 0)[:, :, ::-1] * 255.0
 
@@ -110,11 +119,14 @@ def interp_frame(frameA, frameB, flow01, flow10, t): # pipeline after flow gener
     # frame[~O1] = frameB[~O1]
     # frame[~O0] = frameA[~O0]
     
+    
+    # forward
     isHole = (frame0t == 0)
     frame0t[isHole] = frameB[isHole] # hole filling
     isHole = (frame1t == 0)
     frame1t[isHole] = frameA[isHole] # hole filling
 
     frame = 0.5 * frame0t + 0.5 * frame1t
+    # frame = 0.5 * framet0 + 0.5 * framet1
 
     return frame.astype(np.uint8)

@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import flow_vis
 
 def sumSplat(src, flow, t):
     h = src.shape[0]
@@ -99,6 +100,26 @@ def Bwarpt0(src, flow01, flow10, t):
 
     return out.astype(np.uint8)
 
+def OldFwarp(src, flow, t):
+    h = src.shape[0]
+    w = src.shape[1]
+    out = np.zeros((h, w, 3)).astype(int)
+    flow_x = flow[:, :, 0]
+    flow_y = flow[:, :, 1]
+    flow_coor = np.array([flow_x.flatten(), flow_y.flatten()])
+
+    x_coor, y_coor = np.meshgrid( np.arange(w).astype(int), np.arange(h).astype(int) )
+    grid_coor = np.array([x_coor.flatten(), y_coor.flatten()])
+
+    out_coor = (grid_coor + t * flow_coor).astype(int)
+    mask = (out_coor[0,:] >= 0) & (out_coor[0,:] < w) & (out_coor[1,:] >= 0) & (out_coor[1,:] < h)
+    out_x = out_coor[0,:] * mask
+    out_y = out_coor[1,:] * mask
+    out_coor = np.array([out_x, out_y])
+
+    out[out_y,out_x] = src[grid_coor[1,:],grid_coor[0,:]]
+    return out.astype(np.uint8)
+
 def occlusion(flow01, flow10):
     h = flow01.shape[0]
     w = flow01.shape[1]
@@ -162,3 +183,6 @@ if __name__ == "__main__":
     print(np.count_nonzero(out))
     cv2.imwrite('out5-1.png', out)
     # for DEBUG end
+
+    # cv2.imwrite('flow01.png', flow_vis.flow_to_color(flow01, convert_to_bgr=True))
+    # cv2.imwrite('flow10.png', flow_vis.flow_to_color(flow10, convert_to_bgr=True))
